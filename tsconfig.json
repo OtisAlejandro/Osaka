@@ -11,7 +11,7 @@
     "outDir": "./dist",
     "rootDir": ".",
     "baseUrl": ".",
-    "module": "NodeNext",
+    "module": "CommonJS",
     "target": "ESNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
