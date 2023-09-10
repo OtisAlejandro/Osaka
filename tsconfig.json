@@ -1,0 +1,49 @@
+{
+  "ts-node": {
+    "swc": true,
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  },
+  "compilerOptions": {
+    "strict": true,
+    "alwaysStrict": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowUnreachableCode": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictPropertyInitialization": true,
+    "incremental": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "newLine": "LF",
+    "paths": {
+      "@manager": [
+        "manager/index"
+      ],
+      "@common/*": [
+        "common/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@bot": [
+        "bot"
+      ]
+    }
+  }
+}
