@@ -90,8 +90,8 @@ export class Song {
 
     public startMessage(): { embeds: EmbedBuilder[]; } {
         const playingEmbed = new EmbedBuilder()
-            .setColor("#000000")
-            .setTitle("Track Player")
+            .setColor("Blue")
+            .setTitle("Osaka Music")
             .setURL(this.url)
             .setThumbnail(this.thumbnail as string ? this.thumbnail as string : null)
             .setDescription(`Started playing: **${this.title}**.`);

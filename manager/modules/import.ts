@@ -27,13 +27,13 @@ export async function importer({ client }: { client: Client; }): Promise<void> {
     });
     client.on("ready", async (): Promise<void> => {
         auth = {
-        TOKEN: config.TOKEN,
-        CLIENT_ID: config.CLIENT_ID
+            TOKEN: config.TOKEN,
+            CLIENT_ID: config.CLIENT_ID
         };
         const rest = new REST().setToken(auth.TOKEN);
 
         await rest.put(Routes.applicationCommands(auth.CLIENT_ID), { body: commands })
-            .catch((err: any) => Logger.log({ type: "SLASHCMDS/REST", msg: err }))
+            .catch((err: any) => Logger.log({ type: "SLASHCMDS", msg: err }))
             .then(() => Logger.log({ type: "SLASHCMDS", msg: `Successfully registered ${commands.length} commands on Discord.` }));
     });
 }

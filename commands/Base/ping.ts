@@ -5,7 +5,7 @@ export default {
   data: new SlashCommandBuilder()
     .setName('ping')
     .setDescription(`Check Osaka's status.`),
-  execute(interaction: CommandInteraction) {
+  async execute(interaction: CommandInteraction) {
     const botLatency: number = Date.now() - interaction.createdTimestamp;
     const wsLatency: number = Math.round(interaction.client.ws.ping);
 
@@ -20,6 +20,6 @@ export default {
           name: "Websocket Latency", value: wsLatency + "ms", inline: true
         }
       );
-    return interaction.reply({ content: '', embeds: [embed] }).catch((err: any) => Logger.error({ type: "PING", err }))
+    return await interaction.reply({ content: '', embeds: [embed] }).catch((err: any) => Logger.error({ type: "PING", err }))
   },
 };

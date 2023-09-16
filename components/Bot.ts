@@ -10,7 +10,7 @@ export class Bot {
   public queues: Collection<Snowflake, MusicQueue> = new Collection<Snowflake, MusicQueue>();
   public readonly token: string = config.TOKEN;
   debug: any;
-  
+
   public constructor(private client: Client) {
     this.client.login(this.token);
     play.setToken({
