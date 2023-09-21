@@ -10,11 +10,11 @@ export default {
   data: new SlashCommandBuilder()
   .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageChannels)
     .setName("queue")
-    .setDescription("Shows the bot queue and what is currently playing."),
+    .setDescription("This is the stuff Ah'll be singing."),
   async execute(interaction: CommandInteraction) {
     const queue: MusicQueue = bot.queues.get(interaction.guild?.id as string) as MusicQueue;
 
-    if (!queue) return await interaction.reply({ content: `There is currently no music in the queue.`, ephemeral: true });
+    if (!queue) return await interaction.reply({ content: `You haven't asked me to sing anything...`, ephemeral: true });
 
 
     const embeds = generateQueueEmbed(interaction, queue.songs);

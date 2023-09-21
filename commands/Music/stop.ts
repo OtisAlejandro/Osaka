@@ -7,19 +7,19 @@ export default {
   data: new SlashCommandBuilder()
     .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageChannels)
     .setName("stop")
-    .setDescription("Stop the queue."),
+    .setDescription("Tell me to stop singing.."),
   async execute(interaction: CommandInteraction) {
     const queue: MusicQueue = bot.queues.get(interaction.guild?.id as string) as MusicQueue;
 
-    if (!canModifyQueue({ member: interaction.member as GuildMember })) return await interaction.reply({ content: `I am already playing music in a VC, please join the same channel as me.`, ephemeral: true });
-    if (!queue) return await interaction.reply({ content: `There is not currently anything playing in the queue.`, ephemeral: true });
+    if (!canModifyQueue({ member: interaction.member as GuildMember })) return await interaction.reply({ content: `Geez, you can't kill other people's fun. Join the VC first!`, ephemeral: true });
+    if (!queue) return await interaction.reply({ content: `Ah wasn't about to sing...`, ephemeral: true });
 
     queue.stop();
 
     const stopEmbed = new EmbedBuilder()
       .setColor("Blue")
       .setTitle("Osaka Music")
-      .setDescription(`${interaction.user} stopped the queue.`);
+      .setDescription(`${interaction.user} asked me to stop singing \:(`);
 
     return await interaction.reply({ embeds: [stopEmbed] });
   },

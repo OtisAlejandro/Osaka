@@ -10,11 +10,11 @@ export default {
   data: new SlashCommandBuilder()
     .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageChannels)
     .setName("play")
-    .setDescription("Plays audio from YouTube, Spotify or SoundCloud.")
+    .setDescription("Ah will sing a song from YouTube!.")
     .addStringOption(option =>
       option
         .setName("query")
-        .setDescription("The query to search for.")
+        .setDescription("The song to sing.")
         .setRequired(true)
     ),
   async execute(interaction: ChatInputCommandInteraction) {
@@ -29,7 +29,7 @@ export default {
     const botNoPermissions = new EmbedBuilder()
       .setColor("Blue")
       .setTitle("Osaka Music")
-      .setDescription("I am missing permissions to join your channel or speak in your voice channel.");
+      .setDescription("Geez, Ah can't join the channel, missing perms...");
 
     if (!permissions?.has([PermissionFlagsBits.Connect, PermissionFlagsBits.Speak])) return await interaction.reply({ embeds: [botNoPermissions], ephemeral: true });
 
@@ -43,7 +43,7 @@ export default {
     try {
       song = await Song.from({ url, search: url, interaction });
     } catch (err: any) {
-      interaction.editReply({ content: "An error occured in the music system and the song was not added." });
+      interaction.editReply({ content: "Ah couldn't start singing for some reason' \:D" });
       return Logger.error({ type: "PLAY", err: err });
     } finally {
       if (queue) {
@@ -53,6 +53,7 @@ export default {
           .setColor("Blue")
           .setTitle("Osaka Music")
           .setDescription(`**${song.title}** has been added to the queue by ${interaction.user}.`)
+          .setDescription(`${interaction.user} asked me to sing **${song.title}**.`)
           .setThumbnail(song.thumbnail);
 
         return await interaction.editReply({ content: " ", embeds: [songAdd] }).catch(err => Logger.error({ type: "MUSICCMDS", err }));
