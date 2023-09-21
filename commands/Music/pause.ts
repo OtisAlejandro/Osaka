@@ -11,8 +11,8 @@ export default {
   async execute(interaction: CommandInteraction) {
     const queue: MusicQueue = bot.queues.get(interaction.guild?.id as string) as MusicQueue;
 
-    if (!canModifyQueue({ member: interaction.member as GuildMember })) return await interaction.reply({ content: `There is not currently music playing.`, ephemeral: true });
-    if (!queue) return await interaction.reply({ content: `I am already playing music in a VC, please join the same channel as me.`, ephemeral: true });
+    if (!canModifyQueue({ member: interaction.member as GuildMember })) return await interaction.reply({ content: `There's no music playing right now silly \:D.`, ephemeral: true });
+    if (!queue) return await interaction.reply({ content: `You can't just ask me to stop when you're not even there >:(`, ephemeral: true });
 
     if (queue.player.pause()) {
 

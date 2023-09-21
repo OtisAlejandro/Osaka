@@ -2,7 +2,7 @@ import { Client } from "discord.js";
 import { Bot } from "@components/Bot";
 import { Logger } from "@components/Log";
 
-Logger.log({ type: "STARTUP", msg: "Osaka is initializing..." });
+Logger.log({ type: "STARTUP", msg: "Osaka is waking up..." });
 
 export const bot = new Bot(
     new Client({

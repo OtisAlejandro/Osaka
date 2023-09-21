@@ -12,14 +12,14 @@ export default {
     const queue: MusicQueue = bot.queues.get(interaction.guild?.id as string) as MusicQueue;
 
     if (!canModifyQueue({ member: interaction.member as GuildMember })) return await interaction.reply({ content: `I am already playing music in a VC, please join the same channel as me.`, ephemeral: true });
-    if (!queue) return interaction.reply({ content: `I am not currently playing any music.`, ephemeral: true });
+    if (!queue) return interaction.reply({ content: `Ah am not singing anything right now.`, ephemeral: true });
 
     if (queue.player.unpause()) {
 
       const resumeEmbed = new EmbedBuilder()
         .setColor("Blue")
         .setTitle("Osaka Music")
-        .setDescription(`${interaction.user} resumed the song.`);
+        .setDescription(`${interaction.user} asked me to sing again.`);
 
       await interaction.reply({ embeds: [resumeEmbed] });
       return true;
@@ -28,7 +28,7 @@ export default {
     const notPaused = new EmbedBuilder()
       .setColor("Blue")
       .setTitle("Osaka Music")
-      .setDescription("The queue is not paused.");
+      .setDescription("Ah am still singing! Calm down..");
 
     await interaction.reply({ embeds: [notPaused] });
     return false;

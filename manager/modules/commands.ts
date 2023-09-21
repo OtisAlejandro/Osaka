@@ -16,7 +16,7 @@ export async function commands({ client }: { client: Client; }): Promise<void> {
       await command.execute(interaction, client);
     } catch (error: any) {
       console.error(error);
-      await interaction.reply({ content: "There was an error while executing this command! The error has been reported.", ephemeral: true });
+      await interaction.reply({ content: "I dunno what happened... but it didn't work...", ephemeral: true });
     }
   });
 }

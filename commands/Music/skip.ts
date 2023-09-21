@@ -7,19 +7,19 @@ export default {
   data: new SlashCommandBuilder()
     .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageChannels)
     .setName("skip")
-    .setDescription("Skip the currently playing song."),
+    .setDescription("Ah'll skip this song for you.."),
   async execute(interaction: CommandInteraction) {
     const queue: MusicQueue = bot.queues.get(interaction.guild?.id as string) as MusicQueue;
 
     if (!canModifyQueue({ member: (interaction.member as GuildMember) })) return await interaction.reply({ content: `You are not in my VC!`, ephemeral: true });
-    if (!queue) return await interaction.reply({ content: `There are currently no songs to skip in the queue.`, ephemeral: true });
+    if (!queue) return await interaction.reply({ content: `Ah wasn't gonna sing anyway hmph.`, ephemeral: true });
 
     queue.player.stop(true);
 
     const skipEmbed = new EmbedBuilder()
       .setColor("Blue")
       .setTitle("Osaka Music")
-      .setDescription(`${interaction.user} skipped the track.`);
+      .setDescription(`${interaction.user} asked to me stop singing this song \:(.`);
 
     await interaction.reply({ embeds: [skipEmbed] });
   },

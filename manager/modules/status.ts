@@ -13,6 +13,7 @@ export async function presence({ client }: { client: Client; }): Promise<void> {
             const presences: [{ type: ActivityType.Watching, message: string }, { type: ActivityType.Watching, message: string }] = [
                 { type: ActivityType.Watching, message: `over Alpin's Code` },
                 { type: ActivityType.Watching, message: `Azumanga Daioh!` },
+                { message: `**Eating** Sata Andagi`}
             ];
             // Add another status to the array if you want
 

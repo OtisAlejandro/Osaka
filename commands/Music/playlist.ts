@@ -8,7 +8,7 @@ import { Playlist } from "@components/Playlist";
 export default {
   data: new SlashCommandBuilder()
     .setName("playlist")
-    .setDescription("Play a YouTube or SoundCloud playlist.")
+    .setDescription("Ah'll sing from your YouTube playlist \:D.")
     .addStringOption(option =>
       option
         .setName("query")
@@ -34,7 +34,7 @@ export default {
       Logger.error({ type: "PLAYLIST", err: err.stack });
 
       console.log(url);
-      return interaction.editReply({ content: "Playlist not found." }).catch(console.error);
+      return interaction.editReply({ content: "Ah couldn't find the playlist..." }).catch(console.error);
     }
 
     if (queue) {
@@ -60,7 +60,7 @@ export default {
     const playlistEmbed = new EmbedBuilder()
       .setColor("Blue")
       .setTitle("Track Player")
-      .setDescription("The following playlist has been added to the queue:")
+      .setDescription("Ah'll sing this playlist next:")
       .addFields(
         {
           name: playlist.data.title ? playlist.data.title : "Spotify Playlist", value: "** **"
